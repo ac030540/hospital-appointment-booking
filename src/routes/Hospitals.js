@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import hospitalsAndDetails from '../static/data/hospitalsAndDetails';
 import Search from '../components/Search';
 import HospitalCard from '../components/HospitalCard';
+import Navbar from '../components/Navbar';
+import './Hospitals.css';
 
 const Hospitals = (props) => {
   const [hospitalName, setHospitalName] = useState('');
@@ -42,11 +44,24 @@ const Hospitals = (props) => {
 
   return (
     <div>
-      <Search
-        onSearchQuery={onSearchQuery}
-        setHospitalName={setHospitalName}
-      />
-      {hospitalCards}
+      <Navbar />
+      <div className="first-section">
+        {/* <div className="tagline">
+          Find and book appointments in any hospital
+        </div> */}
+        {/* <hr /> */}
+        <div className="searchbar">
+          <Search
+            onSearchQuery={onSearchQuery}
+            setHospitalName={setHospitalName}
+          />
+          <div className="searchbar-description">Search hospitals by name to book your appointments</div>
+        </div>
+      </div>
+      <div className="hospital-cards-container">
+        <hr />
+        {hospitalCards}
+      </div>
     </div>
   );
 };

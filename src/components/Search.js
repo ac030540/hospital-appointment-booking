@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Search.css';
 
 const Search = (props) => {
   const { setHospitalName, onSearchQuery } = props;
@@ -21,7 +22,7 @@ const Search = (props) => {
     <div>
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Enter hospital name..."
         onChange={(event) => onSearchValueChange(event)}
         onKeyPress={(event) => onPressEnter(event)}
       />

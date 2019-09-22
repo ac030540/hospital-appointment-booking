@@ -1,0 +1,10 @@
+.navbar {
+  background-color: #A8D0E6;
+  padding: 1% 2%;
+}
+
+.navbar .brandname {
+  color: #123C69;
+  font-size: 30px;
+  font-weight: 800;
+}
