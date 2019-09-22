@@ -3,4 +3,70 @@
   padding: 2% 2%;
   margin: 2% 10%;
   border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 1px 0px #d3d3d3;
+-moz-box-shadow: 1px 1px 1px 0px #d3d3d3;
+box-shadow: 1px 1px 1px 0px #d3d3d3;
 }
+.department-shape {
+  display: inline;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.card-container  .hospital-name {
+  color: #123C69;
+  font-size: 25px;
+}
+
+.card-container  .address {
+  color: gray;
+  margin: 5px 0px 20px 0px;
+}
+
+.card-container  .departments {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.card-container .timings {
+  position: relative;
+}
+
+.card-container .book-button {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .card-container .timings {
+    position: relative;
+    text-align: left;
+  }
+  
+  .card-container .book-button {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    text-align: left;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card-container .timings {
+    text-align: left;
+  }
+  
+  .card-container .book-button {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    text-align: left;
+    float: left;
+  }
+}
+

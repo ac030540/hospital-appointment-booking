@@ -12,6 +12,48 @@ input[type=text] {
   color: #123C69;
 }
 
-input[type=text]:focus {
+input[type=text]:focus, button:focus {
   outline: none;
+}
+
+button[type=filled] {
+  background-color: #A8D0E6;
+  border-radius: 5px;
+  border: none;
+  color: #123C69;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type=outlined] {
+  background-color: white; /* Green */
+  border: 1px solid #A8D0E6;
+  border-radius: 5px;
+  color: #123C69;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  
+}
+
+button[type=filled]:hover, button[type=outlined]:hover {
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(211,211,211,1);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(211,211,211,1);
+  box-shadow: 1px 1px 5px 0px rgba(211,211,211,1);
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  input[type=text] {
+    font-size: 20px;
+  }
 }

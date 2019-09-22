@@ -2,7 +2,7 @@
   color: #123C69;
 }
 
-.first-section > .searchbar {
+.first-section .searchbar {
   padding: 5% 10%;
   padding-bottom: 0px;
   color: #123C69;
@@ -17,11 +17,11 @@
 } */
 
 .searchbar {
-  max-width: 800px;
+  max-width: 1200px;
   text-align: center;
   margin:0 auto;
 }
-.searchbar > .searchbar-description {
+.searchbar .searchbar-description {
   margin: 15px;
   font-size: 30px;
   margin-bottom: 0px;
@@ -29,4 +29,10 @@
 
 .hospital-cards-container {
   padding: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .searchbar .searchbar-description {
+    font-size: 20px;
+  }
 }
