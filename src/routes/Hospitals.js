@@ -8,6 +8,8 @@ const Hospitals = (props) => {
   const [hospitalCards, setHospitalCards] = useState([]);
   const hospitalDetails = useRef(hospitalsAndDetails);
 
+  // The following function accepts and array of hospital details
+  // It maps those details into the card and update it on the webpage
   const updateHospitalCards = (details) => {
     setHospitalCards(details.map((hospital) => {
       return (
@@ -22,10 +24,15 @@ const Hospitals = (props) => {
     }));
   };
 
+  // The following effect is triggered when the webpage is mounted
+  // It is used to intialize the cards on the page when it is mounted
   useEffect(() => {
     updateHospitalCards(hospitalDetails.current);
   }, []);
 
+  // The following function filters the details of the hospitals based on
+  // hospitalName, if there is a match then those values are retained.
+  // Finally to reflect it on the frontend, we call updateHospitalCards()
   const onSearchQuery = () => {
     const filteredDetails = hospitalDetails.current.filter(
       (details) => details.hospitalName.toLowerCase().includes(hospitalName),
