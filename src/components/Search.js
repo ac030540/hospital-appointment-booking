@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Search.css';
 
 const Search = (props) => {
   const { setHospitalName, onSearchQuery } = props;
