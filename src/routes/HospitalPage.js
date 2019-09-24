@@ -1,17 +1,11 @@
 import React from 'react';
+import HospitalDetails from '../components/HospitalDetails';
+import Doctors from '../components/Doctors';
 
-const HospitalPage = (props) => (
+const HospitalPage = () => (
   <div>
-  <h1>Hospitals</h1>
-  <h1>Hospitals</h1>
-
-
-  <h1>Hospitals</h1><h1>Hospitals</h1>
-  <h1>Hospitals</h1>
-  <h1>Hospitals</h1>
-  <h1>Hospitals</h1>
-  <h1>Hospitals</h1>
-  <h1>Hospitals</h1><h1>Hospitals</h1><h1>Hospitals</h1><h1>Hospitals</h1><h1>Hospitals</h1>
+    <HospitalDetails />
+    <Doctors />
   </div>
 );
 

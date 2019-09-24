@@ -1,0 +1,40 @@
+.hospital-details-container {
+  border: 1px solid #A8D0E6;
+  padding: 2% 2%;
+  margin: 2% 10%;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 1px 0px #d3d3d3;
+  -moz-box-shadow: 1px 1px 1px 0px #d3d3d3;
+  box-shadow: 1px 1px 1px 0px #d3d3d3;
+}
+
+.hospital-details-container .hospital-name {
+  color: #123C69;
+  font-size: 35px;
+}
+
+.hospital-details-container .hospital-address {
+  color: gray;
+  font-size: 20px;
+}
+
+.hospital-details-container .button-container {
+  text-align: right;
+}
+
+.hospital-details-container .call-now-button {
+  margin-bottom: 50px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .hospital-details-container .button-container {
+    text-align: left;
+  }
+  .hospital-details-container .call-now-button {
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+}
+
+
