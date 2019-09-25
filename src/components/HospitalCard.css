@@ -1,11 +1,9 @@
 .card-container {
-  border: 1px solid #A8D0E6;
   padding: 2% 2%;
   margin: 2% 10%;
   border-radius: 10px;
-  -webkit-box-shadow: 1px 1px 1px 0px #d3d3d3;
--moz-box-shadow: 1px 1px 1px 0px #d3d3d3;
-box-shadow: 1px 1px 1px 0px #d3d3d3;
+  box-shadow: 0 1px 1px -1px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
+  background-color: #ffffff;
 }
 .department-shape {
   display: inline;
@@ -16,7 +14,7 @@ box-shadow: 1px 1px 1px 0px #d3d3d3;
 }
 
 .card-container  .hospital-name {
-  color: #123C69;
+  color: #69d5b1;
   font-size: 25px;
 }
 
@@ -28,10 +26,12 @@ box-shadow: 1px 1px 1px 0px #d3d3d3;
 .card-container  .departments {
   margin-top: 8px;
   margin-bottom: 8px;
+  color: #4a4a4a;
 }
 
 .card-container .timings {
   position: relative;
+  color: #4a4a4a;
 }
 
 .card-container .book-button {

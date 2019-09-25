@@ -34,6 +34,7 @@ const Search = (props) => {
       <div>
         <input
           type="text"
+          autoFocus
           placeholder="Enter hospital name..."
           value={hospitalName}
           onChange={(event) => onSearchValueChange(event)}

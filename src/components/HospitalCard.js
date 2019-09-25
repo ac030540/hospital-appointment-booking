@@ -31,7 +31,7 @@ const HospitalCard = (props) => {
           <div className="timings">
             {timings}
           </div>
-          <button type="outlined" className="book-button" onClick={() => history.push(`/hospital-page/${id}`)}>
+          <button type="filled" className="book-button" onClick={() => history.push(`/hospital-page/${id}`)}>
             Book Appointment
           </button>
         </div>

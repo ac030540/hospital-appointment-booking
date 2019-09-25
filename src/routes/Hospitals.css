@@ -1,11 +1,8 @@
-.first-section {
-  color: #123C69;
-}
 
 .first-section .searchbar {
   padding: 5% 10%;
   padding-bottom: 0px;
-  color: #123C69;
+  color: #4a4a4a;
 }
 
 /* .first-section > .tagline {

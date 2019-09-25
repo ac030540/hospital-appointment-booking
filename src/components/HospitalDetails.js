@@ -22,9 +22,9 @@ const HospitalDetails = () => {
         </div>
       </div>
       <div className="col-md-6 button-container">
-        <button className="call-now-button" type="outlined">Call Now</button>
+        <a href="tel:8286858613"><button className="call-now-button" type="filled">Call Now</button></a>
         <br />
-        <button className="get-directions-button" type="outlined">Get Directions</button>
+        <a href="https://goo.gl/maps/VVJwpnmATvUJD2438" rel="noopener noreferrer" target="_blank"><button className="get-directions-button" type="filled">Get Directions</button></a>
       </div>
     </div>
   );

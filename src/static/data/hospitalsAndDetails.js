@@ -5,6 +5,8 @@ const hospitalsAndDetails = [
     address: 'Sector-12, Kharghar-410210',
     departments: ['OPD', 'Ortho', 'Gynac'],
     timings: 'Mon - Fri',
+    contactNumber: '8286858613',
+    locationLink: 'https://goo.gl/maps/VVJwpnmATvUJD2438',
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ const hospitalsAndDetails = [
     address: 'xyz',
     departments: ['OPD', 'Ortho', 'Gynac'],
     timings: 'xyz',
+    contactNumber: '8286858613',
+    locationLink: 'https://goo.gl/maps/VVJwpnmATvUJD2438',
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ const hospitalsAndDetails = [
     address: 'LMN',
     departments: ['OPD', 'Ortho', 'Gynac'],
     timings: 'LMN',
+    contactNumber: '8286858613',
+    locationLink: 'https://goo.gl/maps/VVJwpnmATvUJD2438',
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ const hospitalsAndDetails = [
     address: 'PQR',
     departments: ['OPD', 'Ortho', 'Gynac'],
     timings: 'PQR',
+    contactNumber: '8286858613',
+    locationLink: 'https://goo.gl/maps/VVJwpnmATvUJD2438',
   },
   {
     id: 5,
@@ -33,6 +41,8 @@ const hospitalsAndDetails = [
     address: 'PR',
     departments: ['OPD', 'Ortho', 'Gynac'],
     timings: 'PR',
+    contactNumber: '8286858613',
+    locationLink: 'https://goo.gl/maps/VVJwpnmATvUJD2438',
   },
   {
     id: 6,
@@ -40,6 +50,8 @@ const hospitalsAndDetails = [
     address: 'P',
     departments: ['OPD', 'Ortho', 'Gynac'],
     timings: 'P',
+    contactNumber: '8286858613',
+    locationLink: 'https://goo.gl/maps/VVJwpnmATvUJD2438',
   },
 ];
 

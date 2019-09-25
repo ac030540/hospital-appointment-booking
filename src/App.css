@@ -1,26 +1,27 @@
-input[type=text] {
-  color: #123C69;
-  border: 1px solid #123C69;
+input[type=text], input[type=date] {
+  color: #69d5b1;
+  border: none;
   width: 100%;
   padding: 1% 4%;
   border-radius: 10px;
   font-size: 30px;
   font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 1px 1px -1px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
 }
 
 ::placeholder {
-  color: #123C69;
+  color: #E4E4E4;
 }
 
-input[type=text]:focus, button:focus {
+input[type=text]:focus,input[type=date]:focus, button:focus {
   outline: none;
 }
 
 button[type=filled] {
-  background-color: #A8D0E6;
+  background-color: #00bc89;
   border-radius: 5px;
   border: none;
-  color: #123C69;
+  color: #ffffff;
   padding: 8px 8px;
   text-align: center;
   text-decoration: none;
@@ -44,13 +45,12 @@ button[type=outlined] {
 }
 
 button[type=filled]:hover, button[type=outlined]:hover {
-  -webkit-box-shadow: 1px 1px 5px 0px rgba(211,211,211,1);
-  -moz-box-shadow: 1px 1px 5px 0px rgba(211,211,211,1);
-  box-shadow: 1px 1px 5px 0px rgba(211,211,211,1);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -2px rgba(0,0,0,.05);
 }
 
-
-
+button[type=filled]:hover {
+  background-color: #00906a;
+}
 
 @media screen and (max-width: 768px) {
   input[type=text] {
