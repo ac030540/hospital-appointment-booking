@@ -1,3 +1,5 @@
+This is a website made for Hospital Appointment Booking.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
