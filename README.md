@@ -1,3 +1,5 @@
+A website wherein the users can search for a hospital, and book an appointment for a doctor working there. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
