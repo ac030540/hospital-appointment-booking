@@ -42,6 +42,9 @@ const Search = (props) => {
         />
       </div>
       {
+        hospitalName
+      }
+      {
         displayClearFilters
           ? <button type="filled" onClick={clearSearchQuery} className="clear-filters-button">Clear Filters</button>
           : null
