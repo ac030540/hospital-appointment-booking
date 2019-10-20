@@ -15,7 +15,7 @@ const Search = (props) => {
   // The following fuction works when the user presses a key
   // If the entered key is Enter then it calls the onSearchQuery from the parent component
   const onPressEnter = (event) => {
-    if (event.key === 'Enter') {
+    if (event.keyCode === 13) {
       setDisplayClearFilters(true);
       onSearchQuery(hospitalName);
     }
@@ -38,7 +38,7 @@ const Search = (props) => {
           placeholder="Enter hospital name..."
           value={hospitalName}
           onChange={(event) => onSearchValueChange(event)}
-          onKeyPress={(event) => onPressEnter(event)}
+          onKeyDown={(event) => onPressEnter(event)}
         />
       </div>
       {

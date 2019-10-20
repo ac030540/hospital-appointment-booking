@@ -55,5 +55,6 @@ button[type=filled]:hover {
 @media screen and (max-width: 768px) {
   input[type=text] {
     font-size: 20px;
+    padding: 1% 1%;
   }
 }

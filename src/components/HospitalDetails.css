@@ -27,6 +27,10 @@
 
 
 @media screen and (max-width: 768px) {
+  .hospital-details-container {
+    padding: 2% 2%;
+    margin: 20px 4%;
+  }
   .hospital-details-container .button-container {
     text-align: left;
   }
