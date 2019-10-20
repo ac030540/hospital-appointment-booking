@@ -41,7 +41,7 @@ const Hospitals = (props) => {
   // Finally to reflect it on the frontend, we call updateHospitalCards()
   const onSearchQuery = (hospitalNameRecieved) => {
     const filteredDetails = hospitalDetails.current.filter(
-      (details) => details.hospitalName.toLowerCase().includes(hospitalNameRecieved),
+      (details) => details.hospitalName.toLowerCase().includes(hospitalNameRecieved.toLowerCase()),
     );
     updateHospitalCards(filteredDetails);
   };
