@@ -1,15 +1,15 @@
 import React from 'react';
-import doctorImage from '../static/images/doctor.jpeg';
+// import doctorImage from '../static/images/doctor.jpeg';
 
 const DoctorCard = (props) => {
   const {
-    history, id, location, name, description, experience, timings, degrees, daysAvailable, departments, bookButtonHidden,
+    history, id, location, name, description, experience, timings, degrees, daysAvailable, departments, bookButtonHidden, doctorImageUrl
   } = props;
   return (
     <div className="card mb-3">
       <div className="row no-gutters">
         <div className="col-md-4">
-          <img src={doctorImage} className="card-img" alt="doctor" />
+          <img src={doctorImageUrl} className="card-img" alt="doctor" />
         </div>
         <div className="col-md-8">
           <div className="card-body">

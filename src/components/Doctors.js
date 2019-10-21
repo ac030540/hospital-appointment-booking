@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import DoctorCard from './DoctorCard';
-import doctorDetails from '../static/data/doctorsDetails';
+// import doctorDetails from '../static/data/doctorsDetails';
 import './Doctors.css';
 
 const Doctors = (props) => {
   const [doctorsArray, setDoctorsArray] = useState([]);
-  const { history, location } = props;
+  const { history, location, match } = props;
+  const { hospitalId } = match.params;
+
   useEffect(() => {
-    const mappedArray = doctorDetails.map((doctor) => (
-      <DoctorCard
-        history={history}
-        location={location}
-        id={doctor.id}
-        key={doctor.id}
-        name={doctor.name}
-        degrees={doctor.degrees}
-        departments={doctor.departments}
-        experience={doctor.experience}
-        description={doctor.description}
-        daysAvailable={doctor.daysAvaialable}
-        timings={doctor.timings}
-      />
-    ));
-    setDoctorsArray(mappedArray);
-  }, [history, location]);
+    fetch(`${process.env.REACT_APP_SERVER_URL}/doctors/${hospitalId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const mappedArray = data.map((doctor) => (
+          <DoctorCard
+            history={history}
+            location={location}
+            id={doctor.did}
+            key={doctor.did}
+            name={doctor.name}
+            doctorImageUrl={doctor.img_url}
+            degrees={doctor.qualification}
+            departments={doctor.depts}
+            experience={doctor.years_of_exp}
+            description={doctor.description}
+            daysAvailable={doctor.days_available}
+            timings={doctor.timings}
+          />
+        ));
+        setDoctorsArray(mappedArray);
+      })
+      .catch((err) => console.log('failed to fetch'));
+  }, [hospitalId, history, location]);
+
   return (
     <div className="doctors-container">
       <div className="heading">

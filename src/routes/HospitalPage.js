@@ -7,7 +7,7 @@ const HospitalPage = (props) => {
   return (
     <div>
       <HospitalDetails match={match} />
-      <Doctors history={history} location={location} />
+      <Doctors history={history} location={location} match={match} />
     </div>
   );
 };
