@@ -6,11 +6,12 @@
   background-color: #ffffff;
 }
 .department-shape {
-  display: inline;
+  display: inline-block;
   border: 1px solid gray;
   border-radius: 20px;
   padding: 5px;
   margin-right: 5px;
+  margin-bottom: 10px;
 }
 
 .card-container  .hospital-name {

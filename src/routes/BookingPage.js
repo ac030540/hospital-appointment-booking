@@ -46,9 +46,9 @@ const BookingPage = (props) => {
         setHospitalName(data.hospital.name);
         const { depts: departments } = data.doctor;
         setDepartmentsArray(departments.map((department) => (
-          <span key={department} className="department-shape">
+          <div key={department} className="department-shape">
             {department}
-          </span>
+          </div>
         )));
       });
   }, [doctorId, hospitalId]);

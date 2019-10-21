@@ -15,10 +15,10 @@ const DoctorCard = (props) => {
           <div className="card-body">
             <h5 className="card-title">{name}</h5>
             <p className="card-text">{degrees}</p>
-            <p className="card-text">
+            <div className="card-text">
 Departments:
               {departments}
-            </p>
+            </div>
             <p className="card-text">
 Years of experience:
               {experience}
