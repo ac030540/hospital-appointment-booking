@@ -56,9 +56,9 @@ const BookingPage = (props) => {
   const dataValidator = () => {
     let invalidCount = 0;
     const today = new Date();
-    const currentYear=today.getFullYear();
-    const currentMonth=today.getMonth()+1;
-    const currentDate=today.getDate();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth() + 1;
+    const currentDate = today.getDate();
     const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
     const enteredDateArray = dateOfAppointment.split('-');
     if (patientName === null || patientName === '') {
@@ -69,7 +69,7 @@ const BookingPage = (props) => {
       setMessage('Entered age is invalid');
       setMessageType('alert-danger');
       invalidCount += 1;
-    } else if (address === null || address === "") {
+    } else if (address === null || address === '') {
       setMessage('Entered address is invalid');
       setMessageType('alert-danger');
       invalidCount += 1;
@@ -103,9 +103,8 @@ const BookingPage = (props) => {
     }
     if (invalidCount === 0) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   };
 
   const onBookButtonClick = () => {

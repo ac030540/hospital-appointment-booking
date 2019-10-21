@@ -3,7 +3,7 @@ import React from 'react';
 
 const DoctorCard = (props) => {
   const {
-    history, id, location, name, description, experience, timings, degrees, daysAvailable, departments, bookButtonHidden, doctorImageUrl
+    history, id, location, name, description, experience, timings, degrees, daysAvailable, departments, bookButtonHidden, doctorImageUrl,
   } = props;
   return (
     <div className="card mb-3">
