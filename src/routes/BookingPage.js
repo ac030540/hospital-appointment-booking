@@ -21,6 +21,7 @@ const BookingPage = (props) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
+  const [hospitalName, setHospitalName] = useState('');
 
   const { hospitalId, doctorId } = match.params;
 
@@ -32,16 +33,18 @@ const BookingPage = (props) => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/doctors/${hospitalId}/${doctorId}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data[0]);
-        setDoctorName(data[0].name);
-        setExperience(data[0].years_of_exp);
-        setDoctorImage(data[0].img_url);
-        setQualificiation(data[0].qualification);
-        setDescription(data[0].description);
-        setTimings(data[0].timings);
-        setDepartmentsArray(data[0].departments);
-        setDaysAvailable(data[0].days_available);
-        const { depts: departments } = data[0];
+        console.log(data.doctor);
+        console.log(data.hospital);
+        setDoctorName(data.doctor.name);
+        setExperience(data.doctor.years_of_exp);
+        setDoctorImage(data.doctor.img_url);
+        setQualificiation(data.doctor.qualification);
+        setDescription(data.doctor.description);
+        setTimings(data.doctor.timings);
+        setDepartmentsArray(data.doctor.departments);
+        setDaysAvailable(data.doctor.days_available);
+        setHospitalName(data.hospital.name);
+        const { depts: departments } = data.doctor;
         setDepartmentsArray(departments.map((department) => (
           <span key={department} className="department-shape">
             {department}
@@ -58,46 +61,47 @@ const BookingPage = (props) => {
     const currentDate=today.getDate();
     const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
     const enteredDateArray = dateOfAppointment.split('-');
-    if(patientName === null || patientName === '') {
+    if (patientName === null || patientName === '') {
       setMessage('Entered name is invalid');
       setMessageType('alert-danger');
-      invalidCount++;
+      invalidCount += 1;
     } else if (age === 0 || age === '' || age.length > 3 || age === null || isNaN(age)) {
       setMessage('Entered age is invalid');
       setMessageType('alert-danger');
-      invalidCount++;
+      invalidCount += 1;
     } else if (address === null || address === "") {
       setMessage('Entered address is invalid');
       setMessageType('alert-danger');
-      invalidCount++;
-      } else if (enteredDateArray[0] < String(currentYear)) {
+      invalidCount += 1;
+    } else if (enteredDateArray[0] < String(currentYear)) {
+      setMessage('Invalid date selected');
+      setMessageType('alert-danger');
+      invalidCount += 1;
+    } else if (enteredDateArray[0] === String(currentYear)) {
+      console.log('year matched');
+      if (enteredDateArray[1] < String(currentMonth)) {
         setMessage('Invalid date selected');
         setMessageType('alert-danger');
-        invalidCount++;
-      } else if (enteredDateArray[0] === String(currentYear)) {
-          console.log('year matched');
-          if(enteredDateArray[1] < String(currentMonth)) {
-            setMessage('Invalid date selected');
-            setMessageType('alert-danger');
-            invalidCount++;
-          } else if(enteredDateArray[1] === String(currentMonth)) {
-            console.log('month matched');
-            if (enteredDateArray[2] < String(currentDate)) {
-              setMessage('Invalid date selected');
-              setMessageType('alert-danger');
-              invalidCount++;
-            }
-          }
-      } else if (contactNumber.length !== 10 || isNaN(contactNumber) || contactNumber === '') {
+        invalidCount += 1;
+      } else if (enteredDateArray[1] === String(currentMonth)) {
+        console.log('month matched');
+        if (enteredDateArray[2] < String(currentDate)) {
+          setMessage('Invalid date selected');
+          setMessageType('alert-danger');
+          invalidCount += 1;
+        }
+      }
+    }
+    if (String(contactNumber).length !== 10 || isNaN(contactNumber) || contactNumber === '') {
       setMessage('Entered contact number is invalid');
       setMessageType('alert-danger');
-      invalidCount++;
-    } else if (reg.test(email)===false || email === '') {
+      invalidCount += 1;
+    } else if (reg.test(email) === false || email === '') {
       setMessage('Entered email is invalid');
       setMessageType('alert-danger');
-      invalidCount++;
+      invalidCount += 1;
     }
-    if (invalidCount===0) {
+    if (invalidCount === 0) {
       return true;
     } else {
       return false;
@@ -105,38 +109,41 @@ const BookingPage = (props) => {
   };
 
   const onBookButtonClick = () => {
-    if (dataValidator()){
+    if (dataValidator()) {
       setMessageType('alert-info');
-    setMessage('Booking appointment. Please wait.');
-    fetch(`${process.env.REACT_APP_SERVER_URL}/booking-appointment/${hospitalId}/${doctorId}`, {
-			method : 'POST',
-			headers : { 'Content-Type' : 'application/json'},
-			body : JSON.stringify({
-        name: patientName,
-        address,
-        age,
-        email,
-        number: contactNumber,
-        date: dateOfAppointment,
-      },
-    )
-		})
-		.then(response => response.json())
-		.then(data => {
-      if(data === 'success') {
-        setMessage('Your appointment has been booked. Kindly check your email.');
-        setMessageType('alert-success');
-      } else {
-        setMessage('Unable to book appointment');
-        setMessageType('alert-danger');
-      }
-      setPatientName('');
-      setAge('');
-      setAddress('');
-      setContactNumber('');
-      setDateOfAppointment('');
-      setEmail('');
-    });
+      setMessage('Booking appointment. Please wait.');
+      fetch(`${process.env.REACT_APP_SERVER_URL}/booking-appointment/${hospitalId}/${doctorId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: patientName,
+          address,
+          age,
+          email,
+          number: contactNumber,
+          date: dateOfAppointment,
+          hospital_name: hospitalName,
+          doctor_name: doctorName,
+          time: timings,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data === 'success') {
+            setMessage('Your appointment has been booked. Kindly check your email.');
+            setMessageType('alert-success');
+          } else {
+            setMessage('Unable to book appointment');
+            setMessageType('alert-danger');
+            console.log(data);
+          }
+          setPatientName('');
+          setAge('');
+          setAddress('');
+          setContactNumber('');
+          setDateOfAppointment('');
+          setEmail('');
+        });
     }
   };
 
@@ -147,7 +154,9 @@ const BookingPage = (props) => {
       </div>
       <br />
       <div style={{ color: 'gray', marginBottom: '5px' }}>
-        You are booking an appointment for doctor working in hospital
+        You are booking an appointment for doctor working in hospital:
+        &nbsp;
+        {hospitalName}
       </div>
       <DoctorCard
         history={history}
