@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DoctorCard from '../components/DoctorCard';
 import './BookingPage.css';
 
@@ -13,6 +13,27 @@ const BookingPage = (props) => {
   const onInputChange = (event, setValue) => {
     setValue(event.target.value);
   };
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+    fetch(`${process.env.REACT_APP_SERVER_URL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+      // email: this.state.signinEmail,
+      // password: this.state.signinPassword
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
   return (
     <div className="booking-form-container">
       <div className="heading">
