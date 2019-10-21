@@ -5,13 +5,13 @@ import 'tachyons';
 // To display the error, you need to pass errorMessage as prop to this component
 
 const MessageCard = ({
-  errorMessage, messageType,
+  message, messageType,
 }) => (
   <div
     className={messageType}
   >
     <p className="tc pa2">
-      {errorMessage}
+      {message}
     </p>
   </div>
 );

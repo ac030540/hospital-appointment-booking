@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DoctorCard from '../components/DoctorCard';
+import MessageCard from '../components/MessageCard';
 import './BookingPage.css';
 
 const BookingPage = (props) => {
@@ -18,6 +19,8 @@ const BookingPage = (props) => {
   const [experience, setExperience] = useState('');
   const [daysAvailable, setDaysAvailable] = useState('');
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState('');
 
   const { hospitalId, doctorId } = match.params;
 
@@ -47,7 +50,64 @@ const BookingPage = (props) => {
       });
   }, [doctorId, hospitalId]);
 
+  const dataValidator = () => {
+    let invalidCount = 0;
+    const today = new Date();
+    const currentYear=today.getFullYear();
+    const currentMonth=today.getMonth()+1;
+    const currentDate=today.getDate();
+    const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
+    const enteredDateArray = dateOfAppointment.split('-');
+    if(patientName === null || patientName === '') {
+      setMessage('Entered name is invalid');
+      setMessageType('alert-danger');
+      invalidCount++;
+    } else if (age === 0 || age === '' || age.length > 3 || age === null || isNaN(age)) {
+      setMessage('Entered age is invalid');
+      setMessageType('alert-danger');
+      invalidCount++;
+    } else if (address === null || address === "") {
+      setMessage('Entered address is invalid');
+      setMessageType('alert-danger');
+      invalidCount++;
+      } else if (enteredDateArray[0] < String(currentYear)) {
+        setMessage('Invalid date selected');
+        setMessageType('alert-danger');
+        invalidCount++;
+      } else if (enteredDateArray[0] === String(currentYear)) {
+          console.log('year matched');
+          if(enteredDateArray[1] < String(currentMonth)) {
+            setMessage('Invalid date selected');
+            setMessageType('alert-danger');
+            invalidCount++;
+          } else if(enteredDateArray[1] === String(currentMonth)) {
+            console.log('month matched');
+            if (enteredDateArray[2] < String(currentDate)) {
+              setMessage('Invalid date selected');
+              setMessageType('alert-danger');
+              invalidCount++;
+            }
+          }
+      } else if (contactNumber.length !== 10 || isNaN(contactNumber) || contactNumber === '') {
+      setMessage('Entered contact number is invalid');
+      setMessageType('alert-danger');
+      invalidCount++;
+    } else if (reg.test(email)===false || email === '') {
+      setMessage('Entered email is invalid');
+      setMessageType('alert-danger');
+      invalidCount++;
+    }
+    if (invalidCount===0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const onBookButtonClick = () => {
+    if (dataValidator()){
+      setMessageType('alert-info');
+    setMessage('Booking appointment. Please wait.');
     fetch(`${process.env.REACT_APP_SERVER_URL}/booking-appointment/${hospitalId}/${doctorId}`, {
 			method : 'POST',
 			headers : { 'Content-Type' : 'application/json'},
@@ -62,7 +122,22 @@ const BookingPage = (props) => {
     )
 		})
 		.then(response => response.json())
-		.then(data => console.log(data));
+		.then(data => {
+      if(data === 'success') {
+        setMessage('Your appointment has been booked. Kindly check your email.');
+        setMessageType('alert-success');
+      } else {
+        setMessage('Unable to book appointment');
+        setMessageType('alert-danger');
+      }
+      setPatientName('');
+      setAge('');
+      setAddress('');
+      setContactNumber('');
+      setDateOfAppointment('');
+      setEmail('');
+    });
+    }
   };
 
   return (
@@ -163,6 +238,12 @@ const BookingPage = (props) => {
           className="form-textfield"
           value={email}
           onChange={(event) => { onInputChange(event, setEmail); }}
+        />
+      </div>
+      <div className="ma2">
+        <MessageCard
+          message={message}
+          messageType={messageType}
         />
       </div>
       <div className="button-wrapper">
