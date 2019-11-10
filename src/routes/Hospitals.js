@@ -28,7 +28,7 @@ const Hospitals = (props) => {
       />
     )));
   }, [setHospitalCards, history]);
-
+  console.log('test');
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/hospitals`)
       .then((response) => response.json())
