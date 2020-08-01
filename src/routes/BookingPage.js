@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import DoctorCard from '../components/DoctorCard';
 import MessageCard from '../components/MessageCard';
+import isAfter from 'date-fns/isAfter';
+import isSameDay from 'date-fns/isSameDay';
 import './BookingPage.css';
 
 const BookingPage = (props) => {
@@ -61,6 +63,7 @@ const BookingPage = (props) => {
     const currentDate = today.getDate();
     const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
     const enteredDateArray = dateOfAppointment.split('-');
+    console.log(enteredDateArray, currentYear, currentMonth, currentDate, "entered date array");
     if (patientName === null || patientName === '') {
       setMessage('Entered name is invalid');
       setMessageType('alert-danger');
@@ -73,26 +76,12 @@ const BookingPage = (props) => {
       setMessage('Entered address is invalid');
       setMessageType('alert-danger');
       invalidCount += 1;
-    } else if (enteredDateArray[0] < String(currentYear)) {
+    } else if (!isAfter(new Date(dateOfAppointment), new Date()) && !isSameDay(new Date(dateOfAppointment), new Date())) {
       setMessage('Invalid date selected');
       setMessageType('alert-danger');
       invalidCount += 1;
-    } else if (enteredDateArray[0] === String(currentYear)) {
-      console.log('year matched');
-      if (enteredDateArray[1] < String(currentMonth)) {
-        setMessage('Invalid date selected');
-        setMessageType('alert-danger');
-        invalidCount += 1;
-      } else if (enteredDateArray[1] === String(currentMonth)) {
-        console.log('month matched');
-        if (enteredDateArray[2] < String(currentDate)) {
-          setMessage('Invalid date selected');
-          setMessageType('alert-danger');
-          invalidCount += 1;
-        }
-      }
     }
-    if (String(contactNumber).length !== 10 || isNaN(contactNumber) || contactNumber === '') {
+    else if (String(contactNumber).length !== 10 || isNaN(contactNumber) || contactNumber === '') {
       setMessage('Entered contact number is invalid');
       setMessageType('alert-danger');
       invalidCount += 1;
