@@ -1,3 +1,5 @@
+# Hospital Appointment Booker
+
 A website wherein the users can search for a hospital, and book an appointment for a doctor working there. 
 
 ## Getting started with the project
